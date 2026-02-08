@@ -1,0 +1,24 @@
+# Core dependencies for Form Extraction Pipeline
+
+# Image processing
+opencv-python>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# Barcode/QR detection
+pyzbar>=0.1.9
+
+# OCR
+pytesseract>=0.3.10
+
+# Deep Learning (LayoutLM)
+torch>=2.0.0
+transformers>=4.30.0
+
+# Utilities
+dataclasses-json>=0.6.0
+
+# Optional: For production cloud OCR services
+# google-cloud-vision>=3.4.0
+# boto3>=1.28.0  # AWS Textract
+# azure-ai-vision>=0.1.0

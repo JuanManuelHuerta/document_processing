@@ -1,0 +1,320 @@
+# Form Extraction Pipeline Configuration
+# Define your form types, barcode mappings, and field templates here
+
+pipeline:
+  # OCR engine: 'tesseract', 'google_vision', 'aws_textract', 'azure_vision'
+  ocr_engine: 'tesseract'
+  
+  # Use LayoutLM for extraction (requires fine-tuned model)
+  use_layoutlm: false
+  
+  # Path to fine-tuned LayoutLM model (if applicable)
+  layoutlm_model_path: null
+  
+  # Path to form classification model
+  classification_model_path: null
+  
+  # Target DPI for preprocessing
+  target_dpi: 300
+  
+  # Confidence threshold for human review
+  confidence_threshold: 0.75
+
+# Barcode to form type mapping
+barcode_mapping:
+  'MED-INTAKE-': 'medical_intake'
+  'INS-CLAIM-': 'insurance_claim'
+  'REG-FORM-': 'registration'
+  'APP-FORM-': 'application'
+
+# Form type definitions
+form_types:
+  medical_intake:
+    name: "Medical Intake Form"
+    description: "Patient intake form for medical facilities"
+    version: "v2.1"
+    
+    # Template-based field definitions (pixel coordinates)
+    # Coordinates are relative to top-left corner after preprocessing
+    fields:
+      - name: "patient_first_name"
+        label: "First Name"
+        x: 150
+        y: 220
+        width: 300
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "patient_last_name"
+        label: "Last Name"
+        x: 500
+        y: 220
+        width: 300
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "date_of_birth"
+        label: "Date of Birth"
+        x: 150
+        y: 300
+        width: 200
+        height: 50
+        type: "date"
+        format: "MM/DD/YYYY"
+        required: true
+        
+      - name: "phone_number"
+        label: "Phone"
+        x: 400
+        y: 300
+        width: 250
+        height: 50
+        type: "phone"
+        required: true
+        
+      - name: "emergency_contact"
+        label: "Emergency Contact"
+        x: 150
+        y: 380
+        width: 400
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "has_insurance"
+        label: "Has Insurance"
+        x: 150
+        y: 460
+        width: 30
+        height: 30
+        type: "checkbox"
+        required: false
+        
+      - name: "allergies"
+        label: "Known Allergies"
+        x: 150
+        y: 540
+        width: 600
+        height: 100
+        type: "text"
+        multiline: true
+        required: false
+        
+      - name: "current_medications"
+        label: "Current Medications"
+        x: 150
+        y: 680
+        width: 600
+        height: 100
+        type: "text"
+        multiline: true
+        required: false
+        
+      - name: "signature_date"
+        label: "Signature Date"
+        x: 500
+        y: 850
+        width: 150
+        height: 50
+        type: "date"
+        format: "MM/DD/YYYY"
+        required: true
+
+  insurance_claim:
+    name: "Insurance Claim Form"
+    description: "Standard insurance claim submission"
+    version: "v1.5"
+    
+    fields:
+      - name: "claim_number"
+        label: "Claim Number"
+        x: 150
+        y: 180
+        width: 250
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "policy_number"
+        label: "Policy Number"
+        x: 450
+        y: 180
+        width: 250
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "claimant_name"
+        label: "Claimant Name"
+        x: 150
+        y: 260
+        width: 400
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "date_of_loss"
+        label: "Date of Loss"
+        x: 150
+        y: 340
+        width: 200
+        height: 50
+        type: "date"
+        format: "MM/DD/YYYY"
+        required: true
+        
+      - name: "loss_description"
+        label: "Description of Loss"
+        x: 150
+        y: 420
+        width: 600
+        height: 150
+        type: "text"
+        multiline: true
+        required: true
+        
+      - name: "estimated_amount"
+        label: "Estimated Amount"
+        x: 150
+        y: 620
+        width: 200
+        height: 50
+        type: "currency"
+        required: true
+        
+      - name: "police_report_filed"
+        label: "Police Report Filed"
+        x: 400
+        y: 620
+        width: 30
+        height: 30
+        type: "checkbox"
+        required: false
+
+  registration:
+    name: "General Registration Form"
+    description: "Multi-purpose registration form"
+    version: "v3.0"
+    
+    fields:
+      - name: "full_name"
+        label: "Full Name"
+        x: 150
+        y: 200
+        width: 500
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "email"
+        label: "Email Address"
+        x: 150
+        y: 280
+        width: 400
+        height: 50
+        type: "email"
+        required: true
+        
+      - name: "address_line1"
+        label: "Address Line 1"
+        x: 150
+        y: 360
+        width: 500
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "address_line2"
+        label: "Address Line 2"
+        x: 150
+        y: 440
+        width: 500
+        height: 50
+        type: "text"
+        required: false
+        
+      - name: "city"
+        label: "City"
+        x: 150
+        y: 520
+        width: 250
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "state"
+        label: "State"
+        x: 450
+        y: 520
+        width: 100
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "zip_code"
+        label: "ZIP Code"
+        x: 600
+        y: 520
+        width: 120
+        height: 50
+        type: "text"
+        required: true
+        
+      - name: "agree_terms"
+        label: "Agree to Terms"
+        x: 150
+        y: 600
+        width: 30
+        height: 30
+        type: "checkbox"
+        required: true
+
+# Validation rules per field type
+validation_rules:
+  date:
+    formats: ['MM/DD/YYYY', 'YYYY-MM-DD', 'DD/MM/YYYY']
+    min_year: 1900
+    max_year: 2030
+    
+  phone:
+    patterns: ['\d{3}-\d{3}-\d{4}', '\(\d{3}\) \d{3}-\d{4}', '\d{10}']
+    
+  email:
+    pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    
+  currency:
+    min_value: 0
+    max_value: 999999999
+    
+  zip_code:
+    pattern: '^\d{5}(-\d{4})?$'
+
+# OCR configuration
+ocr:
+  tesseract:
+    # Tesseract config string
+    config: '--psm 7 --oem 3'
+    # Language(s)
+    lang: 'eng'
+    
+  google_vision:
+    credentials_path: '/path/to/credentials.json'
+    
+  aws_textract:
+    region: 'us-east-1'
+    # Uses default AWS credentials
+    
+  azure_vision:
+    endpoint: 'https://your-resource.cognitiveservices.azure.com'
+    key: 'your-key-here'
+
+# Logging configuration
+logging:
+  level: 'INFO'  # DEBUG, INFO, WARNING, ERROR
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  output:
+    console: true
+    file: true
+    file_path: './logs/extraction.log'
