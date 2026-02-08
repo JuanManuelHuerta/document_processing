@@ -1,0 +1,136 @@
+{
+  "pdf_path": "data/0086.pdf",
+  "total_pages": 2,
+  "pages": [
+    {
+      "page_number": 1,
+      "barcode": {
+        "detected": true,
+        "data": "FORM-0086-001",
+        "type": "CODE128"
+      },
+      "classification": {
+        "form_type": "medical_form",
+        "confidence": 1.0,
+        "method": "barcode"
+      },
+      "fields": [
+        {
+          "name": "patient_name",
+          "value": "John Smith",
+          "confidence": 0.7505514659994675
+        },
+        {
+          "name": "date_of_birth",
+          "value": "03/15/1985",
+          "confidence": 0.7383633522944117
+        },
+        {
+          "name": "gender",
+          "value": "Male",
+          "confidence": 0.8198330557636275
+        },
+        {
+          "name": "address",
+          "value": "123 Main Street",
+          "confidence": 0.8206658108032621
+        },
+        {
+          "name": "phone",
+          "value": "555-0123",
+          "confidence": 0.9167017998799014
+        },
+        {
+          "name": "email",
+          "value": "example@email.com",
+          "confidence": 0.8855289818245047
+        },
+        {
+          "name": "emergency_contact",
+          "value": "Sarah Smith (555-0456)",
+          "confidence": 0.9100766781576481
+        },
+        {
+          "name": "insurance_provider",
+          "value": "Blue Cross",
+          "confidence": 0.7644842646414903
+        },
+        {
+          "name": "policy_number",
+          "value": "POL-123456",
+          "confidence": 0.8275271023821696
+        },
+        {
+          "name": "allergies",
+          "value": "Penicillin",
+          "confidence": 0.9098562390586891
+        },
+        {
+          "name": "current_medications",
+          "value": "None",
+          "confidence": 0.7200605219285616
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "barcode": {
+        "detected": false,
+        "data": null,
+        "type": null
+      },
+      "classification": {
+        "form_type": "registration_form",
+        "confidence": 0.87,
+        "method": "visual_cnn"
+      },
+      "fields": [
+        {
+          "name": "full_name",
+          "value": "Jane Doe",
+          "confidence": 0.8240724777083515
+        },
+        {
+          "name": "email",
+          "value": "example@email.com",
+          "confidence": 0.912030724755125
+        },
+        {
+          "name": "phone",
+          "value": "555-0123",
+          "confidence": 0.9131814993989651
+        },
+        {
+          "name": "address",
+          "value": "123 Main Street",
+          "confidence": 0.851422208988036
+        },
+        {
+          "name": "city",
+          "value": "Springfield",
+          "confidence": 0.8530348241100632
+        },
+        {
+          "name": "state",
+          "value": "IL",
+          "confidence": 0.8924500884320632
+        },
+        {
+          "name": "zip_code",
+          "value": "62701",
+          "confidence": 0.8947333883142568
+        },
+        {
+          "name": "date_of_birth",
+          "value": "03/15/1985",
+          "confidence": 0.8042202598156492
+        },
+        {
+          "name": "signature_date",
+          "value": "02/08/2026",
+          "confidence": 0.771498654121806
+        }
+      ]
+    }
+  ]
+}
